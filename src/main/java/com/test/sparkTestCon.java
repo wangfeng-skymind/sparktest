@@ -16,22 +16,23 @@ import java.util.Iterator;
 public class sparkTestCon {
     public static void main(String[] args) {
        // String home = System.getProperty("hadoop.home.dir");
+ /*       System.setProperty("hadoop.home.dir", "192.168.1.138");
         System.setProperty("HADOOP_USER_NAME", "hadoop");
-       // System.setProperty("HADOOP_HOME", "hadoop");
-
-        SparkConf conf=new SparkConf();
+        System.setProperty("HADOOP_HOME", "hadoop");
+*/
+/*        SparkConf conf=new SparkConf();
         conf.set("spark.testing.memory", "2147480000");     //因为jvm无法获得足够的资源
         conf.setMaster("spark://192.168.1.138:7077");
         conf.setAppName( "First Spark App" );
         JavaSparkContext sc = new JavaSparkContext(conf);
-        System.out.println(sc);
+        System.out.println(sc);*/
 
-       /* SparkConf conf = new SparkConf();
+        SparkConf conf = new SparkConf();
         conf.setAppName("WordCounter");
         conf.setMaster("spark://192.168.1.138:7077");
 
-        String fileName = "E:/sparktest.log";
-
+        String fileName = System.getProperty("user.dir")+"/src/main/resources/sparktest.log";
+System.out.println("========="+fileName);
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> lines = sc.textFile(fileName, 1);
 
@@ -78,6 +79,6 @@ public class sparkTestCon {
                         System.out.println("【" + e._1 + "】出现了" + e._2 + "次");
                     }
                 });
-        sc.close();*/
+        sc.close();
     }
 }
