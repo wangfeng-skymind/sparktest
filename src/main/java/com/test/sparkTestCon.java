@@ -31,7 +31,7 @@ public class sparkTestCon {
         SparkConf conf = new SparkConf();
         conf.setAppName("WordCounter");
         conf.setMaster("spark://192.168.1.138:7077");
-        conf.setJars(JavaSparkContext.jarOfClass ( sparkTestCon.class ));
+        conf.setJars(JavaSparkContext.jarOfClass (com.test.sparkTestCon.class ));
 
         String fileName = System.getProperty("user.dir")+"/src/main/resources/sparktest.log";
 System.out.println("========="+fileName);
