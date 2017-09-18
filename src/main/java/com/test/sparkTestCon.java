@@ -31,15 +31,18 @@ public class sparkTestCon {
         SparkConf conf = new SparkConf();
         conf.setAppName("WordCounter");
         conf.setMaster("spark://192.168.1.138:7077");
+        conf.setJars(JavaSparkContext.jarOfClass ( sparkTestCon.class ));
+
         String fileName = System.getProperty("user.dir")+"/src/main/resources/sparktest.log";
 System.out.println("========="+fileName);
         JavaSparkContext sc = new JavaSparkContext(conf);
 
 
         System.out.println("spark home:"+sc.getSparkHome());
-
+        //一次一行，String类型    ,还有hadoopfile，sequenceFile什么的  ，可以直接用sc.textFile("path")
         JavaRDD<String> lines = sc.textFile(fileName, 1);
         lines.cache();
+        //collect方法，用于将RDD类型转化为java基本类型，如下
         List<String> line = lines.collect();
         for ( String val:line ) {
             System.out.println(val);
